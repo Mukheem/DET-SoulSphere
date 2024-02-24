@@ -12,6 +12,9 @@ public class BallController : MonoBehaviour
     private float zOffset = 0.05f;
     private float yOffset = 0.1f;
 
+     
+    public OVREyeGaze eyeGaze;
+    public GameObject caps;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +22,8 @@ public class BallController : MonoBehaviour
         currentChiballScale = new Vector3(0.08f,0.08f,0.08f);
         chiBall.transform.localScale = currentChiballScale;
         chiBall.SetActive(false);
+
+        
     }
 
     void changeScaling(float distance){
@@ -27,6 +32,16 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (eyeGaze == null){
+            Debug.Log("Gaze ia Null");
+        }
+
+        if (eyeGaze.EyeTrackingEnabled)
+        {
+            Debug.Log("Eye tracking enabled");
+            Debug.Log(eyeGaze.Eye);
+           caps.transform.rotation= eyeGaze.transform.rotation;
+        }
         
         if (leftHand.IsTracked && rightHand.IsTracked)
         {
