@@ -2962,9 +2962,7 @@ MonoBehaviour:
   chiBall: {fileID: 1292455421}
   leftHand: {fileID: 386666995}
   rightHand: {fileID: 1931278319}
-  currentChiballScale: {x: 0, y: 0, z: 0}
-  zOffset: 0.05
-  yOffset: 0.1
+  currentChiballScale: {x: 0.08, y: 0.08, z: 0.08}
 --- !u!4 &832345410
 Transform:
   m_ObjectHideFlags: 0
