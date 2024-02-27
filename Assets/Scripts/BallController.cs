@@ -8,23 +8,21 @@ public class BallController : MonoBehaviour
     public OVRHand leftHand;
     public OVRHand  rightHand;
     public Vector3 currentChiballScale ;
-
+   
     private float zOffset = 0.05f;
     private float yOffset = 0.1f;
-    private bool stoppingaApplication = false;
+    
     private bool throwBall = false;
-     private Rigidbody rb;
-    public OVREyeGaze eyeGaze;
-    public GameObject caps;
-    // Start is called before the first frame update
+   
+    //public OVREyeGaze eyeGaze;
+    //public GameObject caps;
+    
     void Start()
     {
         // set the scale of chiBall
         currentChiballScale = new Vector3(0.08f,0.08f,0.08f);
         chiBall.transform.localScale = currentChiballScale;
         chiBall.SetActive(false);
-
-        rb = chiBall.GetComponent<Rigidbody>();
     }
 
     void changeScaling(float distance){
@@ -46,7 +44,7 @@ public class BallController : MonoBehaviour
         }
         */
         
-        if ((leftHand.IsTracked && rightHand.IsTracked) && !throwBall && !stoppingaApplication)
+        if ((leftHand.IsTracked && rightHand.IsTracked) && !throwBall )
         {
             // Get positions of both hands
             Vector3 leftHandPos = leftHand.transform.position;
@@ -75,24 +73,22 @@ public class BallController : MonoBehaviour
             }
         }
 
-        if(throwBall){
-             Debug.Log("Throwing ball...by Adding force");
-            //rb.AddForce(transform.forward * 50.0f, ForceMode.Impulse);
-            StartCoroutine(SlideBallIntoSpace());
-            stoppingaApplication = true;
-            throwBall = false;
-        }
+       
     }
 
+    //Throwing the ball into space
     public void ThrowBall(){
         Debug.Log("Throwing ball...");
         throwBall = true;
+        StartCoroutine(SlideBallIntoSpace());
     }
 
-    IEnumerator SlideBallIntoSpace(){
+    //CoRoutine to translate the ball wrt Worldspace
+    public IEnumerator SlideBallIntoSpace(){
+        
         while(true){
-             chiBall.transform.position = new Vector3(chiBall.transform.position.x,chiBall.transform.position.y,chiBall.transform.position.z+0.02f); 
-             yield return new WaitForSeconds(.08f);
+            chiBall.transform.Translate(Vector3.forward * Time.deltaTime,Camera.main.transform);
+            yield return new WaitForSeconds(.08f);
         }
        
     }

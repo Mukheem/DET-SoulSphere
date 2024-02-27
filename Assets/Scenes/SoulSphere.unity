@@ -3309,8 +3309,7 @@ MonoBehaviour:
   leftHand: {fileID: 386666995}
   rightHand: {fileID: 1931278319}
   currentChiballScale: {x: 0.08, y: 0.08, z: 0.08}
-  eyeGaze: {fileID: 1540188548}
-  caps: {fileID: 731982658}
+  HMDTransform: {fileID: 367992367}
 --- !u!4 &832345410
 Transform:
   m_ObjectHideFlags: 0
