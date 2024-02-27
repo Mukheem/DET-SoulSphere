@@ -11,8 +11,9 @@ public class BallController : MonoBehaviour
 
     private float zOffset = 0.05f;
     private float yOffset = 0.1f;
-
-     
+    private bool stoppingaApplication = false;
+    private bool throwBall = false;
+     private Rigidbody rb;
     public OVREyeGaze eyeGaze;
     public GameObject caps;
     // Start is called before the first frame update
@@ -23,7 +24,7 @@ public class BallController : MonoBehaviour
         chiBall.transform.localScale = currentChiballScale;
         chiBall.SetActive(false);
 
-        
+        rb = chiBall.GetComponent<Rigidbody>();
     }
 
     void changeScaling(float distance){
@@ -32,6 +33,7 @@ public class BallController : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*
         if (eyeGaze == null){
             Debug.Log("Gaze ia Null");
         }
@@ -42,8 +44,9 @@ public class BallController : MonoBehaviour
             Debug.Log(eyeGaze.Eye);
            caps.transform.rotation= eyeGaze.transform.rotation;
         }
+        */
         
-        if (leftHand.IsTracked && rightHand.IsTracked)
+        if ((leftHand.IsTracked && rightHand.IsTracked) && !throwBall && !stoppingaApplication)
         {
             // Get positions of both hands
             Vector3 leftHandPos = leftHand.transform.position;
@@ -56,6 +59,7 @@ public class BallController : MonoBehaviour
           
             //zOffset is used so that the ball appears exactly at the center of the hands. it is multiplied by 'Camera.main.transform.forward' so that the ball's Z axis is consistent when the user rotates or turns his/her head.
             midpoint += Camera.main.transform.forward * zOffset;
+            //midpoint.z +=  zOffset;
             //yOffset is used so that ball appears slightly up to the hands y axis.
             midpoint.y += yOffset;
          
@@ -69,10 +73,27 @@ public class BallController : MonoBehaviour
                 chiBall.SetActive(false);
                 currentChiballScale = new Vector3(0.08f,0.08f,0.08f);
             }
-
-
-           
-            
         }
+
+        if(throwBall){
+             Debug.Log("Throwing ball...by Adding force");
+            //rb.AddForce(transform.forward * 50.0f, ForceMode.Impulse);
+            StartCoroutine(SlideBallIntoSpace());
+            stoppingaApplication = true;
+            throwBall = false;
+        }
+    }
+
+    public void ThrowBall(){
+        Debug.Log("Throwing ball...");
+        throwBall = true;
+    }
+
+    IEnumerator SlideBallIntoSpace(){
+        while(true){
+             chiBall.transform.position = new Vector3(chiBall.transform.position.x,chiBall.transform.position.y,chiBall.transform.position.z+0.02f); 
+             yield return new WaitForSeconds(.08f);
+        }
+       
     }
 }
