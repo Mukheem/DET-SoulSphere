@@ -4,7 +4,13 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SoulSphere.unity
+    guid: f61c72046b8944abfad638d395846152
+  - enabled: 0
+    path: Assets/Samples/Meta XR Interaction SDK OVR Samples/62.0.0/Example Scenes/PoseExamples.unity
+    guid: 4fe358b21fe17764db89a9ab9f202327
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: c155221270a2b49b7b7e5293ee6b35d9, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 4d0aed6decbe44f61886f1a00f9c3cfb, type: 2}
