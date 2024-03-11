@@ -10,11 +10,15 @@ public class WebSocketController : MonoBehaviour
     String esp32WebsocketPort = "81";
     // Websocket Service
     WebSocket ws;
-
+    public NarrationController narrationControllerScript;
     // Start is called before the first frame update
     void OnEnable()
     {
         ConnectWithESP32();
+    }
+
+    void Start(){
+    //narrationController.GetComponent<NarrationController>();
     }
 
     // Update is called once per frame
@@ -36,6 +40,9 @@ public class WebSocketController : MonoBehaviour
         ws.OnMessage += (sender, e) =>
         {
             Debug.Log("Received message: " + e.Data);
+            if(e.Data.Equals("Start Narration", StringComparison.OrdinalIgnoreCase)){
+                narrationControllerScript.startNarration = true;
+            }
           
         };
         ws.Connect();

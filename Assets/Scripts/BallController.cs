@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
    
     private float zOffset = 0.05f;
     private float yOffset = 0.1f;
-    
+    public bool startChiBall = false;
     private bool throwBall = false;
    
     //public OVREyeGaze eyeGaze;
@@ -44,7 +44,7 @@ public class BallController : MonoBehaviour
         }
         */
         
-        if ((leftHand.IsTracked && rightHand.IsTracked) && !throwBall )
+        if ((leftHand.IsTracked && rightHand.IsTracked) && !throwBall && startChiBall)
         {
             // Get positions of both hands
             Vector3 leftHandPos = leftHand.transform.position;
