@@ -10,6 +10,7 @@ public class NarrationController : MonoBehaviour
     public AudioClip welcomeClip;
     public GameObject cameraRig;
     private OVRPassthroughLayer passthroughlayerScript;
+    public GameObject menu;
 
     public void OnEnable()
     {
@@ -19,6 +20,7 @@ public class NarrationController : MonoBehaviour
     void Start()
     {
         passthroughlayerScript = cameraRig.GetComponent<OVRPassthroughLayer>();
+        menu.SetActive(true);
     }
 
     // Update is called once per frame
@@ -27,6 +29,12 @@ public class NarrationController : MonoBehaviour
         if (startNarration)
         {
             StartCoroutine(startIntroNarration());
+        }
+        if (menu.activeInHierarchy)
+        {
+            menu.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 2;
+            menu.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+            menu.transform.forward *= -1;
         }
     }
 
@@ -41,8 +49,8 @@ public class NarrationController : MonoBehaviour
 
         while (passthroughlayerScript.textureOpacity != 1.0f)
         {
-            passthroughlayerScript.textureOpacity += 0.1f;
-            yield return new WaitForSeconds(0.2f);
+            passthroughlayerScript.textureOpacity += 0.01f;//0.0009f;
+            yield return new WaitForSeconds(0.01f);
         }
         
 
