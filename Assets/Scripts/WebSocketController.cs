@@ -23,8 +23,9 @@ public class WebSocketController : MonoBehaviour
         //ConnectWithArduino(true);
     }
 
-    void Start(){
-    //narrationController.GetComponent<NarrationController>();
+    public void Start(){
+        ConnectWithESP32();
+        //narrationController.GetComponent<NarrationController>();
     }
 
     // Update is called once per frame

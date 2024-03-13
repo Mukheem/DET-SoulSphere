@@ -16,6 +16,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   Serial.flush();
   touchReadingState = digitalRead(TOUCH_BUTTON_PIN);
+  //Serial.println(touchReadingState);
   if (touchReadingState == HIGH) {
     digitalWrite(LED_PIN, HIGH);
     digitalWrite(THERMALPAD_BUTTON_PIN, HIGH);
@@ -25,4 +26,5 @@ void loop() {
     digitalWrite(THERMALPAD_BUTTON_PIN, LOW);
     //Serial.println("Touch released");
   }
+  //delay(20);
 }
