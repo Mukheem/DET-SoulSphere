@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Target
   - ChiBall
+  - PoseThumb
+  - PoseStop
+  - DemoChiBall
+  - GhostHands
   layers:
   - Default
   - TransparentFX

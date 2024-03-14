@@ -11,13 +11,13 @@ public class WebSocketController : MonoBehaviour
     String esp32IPAddress = "10.204.0.245";
     String esp32WebsocketPort = "81";
     // Websocket Service
-    WebSocket ws;
+    public WebSocket ws;
     public NarrationController narrationControllerScript;
 
     // Serial Port to which Arduino is connected
     SerialPort arduinoPort = new SerialPort("COM4", 115200);
     // Start is called before the first frame update
-    void OnEnable()
+    public void OnEnable()
     {
         //ConnectWithESP32();
         //ConnectWithArduino(true);
@@ -43,6 +43,7 @@ public class WebSocketController : MonoBehaviour
         {
             Debug.Log("WebSocket connected");
             ws.Send("Hello from Unity!");
+            //ws.Send("Need input");
         };
         ws.OnMessage += (sender, e) =>
         {
