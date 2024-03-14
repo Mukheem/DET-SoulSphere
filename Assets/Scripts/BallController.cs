@@ -12,17 +12,21 @@ public class BallController : MonoBehaviour
     private float zOffset = 0.05f;
     private float yOffset = 0.1f;
     public bool startChiBall = false;
-    private bool throwBall = false;
-   
+    public bool throwBall = false;
+    public GameObject webSocketController;
+    private WebSocketController webSocketControllerScript;
+
     //public OVREyeGaze eyeGaze;
     //public GameObject caps;
-    
+
     void Start()
     {
         // set the scale of chiBall
         currentChiballScale = new Vector3(0.08f,0.08f,0.08f);
         chiBall.transform.localScale = currentChiballScale;
         chiBall.SetActive(false);
+
+        webSocketControllerScript = webSocketController.GetComponent<WebSocketController>();
     }
 
     void changeScaling(float distance){
@@ -80,6 +84,8 @@ public class BallController : MonoBehaviour
     public void ThrowBall(){
         Debug.Log("Throwing ball...");
         throwBall = true;
+        Debug.Log("Websocket state - " + webSocketControllerScript.ws.ReadyState);
+        webSocketControllerScript.ws.Send("throw");
         StartCoroutine(SlideBallIntoSpace());
     }
 

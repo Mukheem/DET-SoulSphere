@@ -85,10 +85,11 @@ public class NarrationController : MonoBehaviour
             {
                 Camera.main.clearFlags = CameraClearFlags.Skybox;
                 Debug.Log("Sending Stop request");
+                Debug.Log("Websocket state - " + webSocketControllerScript.ws.ReadyState);
                 //webSocketControllerScript.ws.Close();
-               // webSocketControllerScript.ws.Send("Stop input");
+                // webSocketControllerScript.ws.Send("Stop input");
                 //webSocketControllerScript.ws.SendAsync("Stop input", true);
-                
+
             }
         }
         
@@ -111,7 +112,7 @@ public class NarrationController : MonoBehaviour
         audioSource.PlayOneShot(handsOnTableClip);
         webSocketControllerScript.ws.Send("Need input");
         StartCoroutine(moveFromMixedReality());
-        yield return new WaitForSeconds(handsOnTableClip.length);
+        yield return new WaitForSeconds(handsOnTableClip.length+1.9f);
         StartCoroutine(liftHandsFromTheTable());
     }
 
@@ -128,5 +129,7 @@ public class NarrationController : MonoBehaviour
         ballController.GetComponent<BallController>().startChiBall = true;
         StopPoses[0].SetActive(true);
         StopPoses[1].SetActive(true);
+        audioSource.PlayOneShot(throwChiBallClip);
+        yield return new WaitForSeconds(throwChiBallClip.length);
     }
 }
