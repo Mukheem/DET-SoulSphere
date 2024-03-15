@@ -10,6 +10,7 @@ TagManager:
   - PoseStop
   - DemoChiBall
   - GhostHands
+  - Rounds
   layers:
   - Default
   - TransparentFX

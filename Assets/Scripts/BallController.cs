@@ -15,7 +15,7 @@ public class BallController : MonoBehaviour
     public bool throwBall = false;
     public GameObject webSocketController;
     private WebSocketController webSocketControllerScript;
-
+    private GameObject chiBallRounds;
     //public OVREyeGaze eyeGaze;
     //public GameObject caps;
 
@@ -24,6 +24,10 @@ public class BallController : MonoBehaviour
         // set the scale of chiBall
         currentChiballScale = new Vector3(0.08f,0.08f,0.08f);
         chiBall.transform.localScale = currentChiballScale;
+
+        
+        chiBallRounds = GameObject.FindGameObjectWithTag("Rounds");
+        chiBallRounds.SetActive(false);
         chiBall.SetActive(false);
 
         webSocketControllerScript = webSocketController.GetComponent<WebSocketController>();
@@ -91,8 +95,8 @@ public class BallController : MonoBehaviour
 
     //CoRoutine to translate the ball wrt Worldspace
     public IEnumerator SlideBallIntoSpace(){
-        
-        while(true){
+        chiBallRounds.SetActive(true);
+        while (true){
             chiBall.transform.Translate(Vector3.forward * Time.deltaTime,Camera.main.transform);
             yield return new WaitForSeconds(.08f);
         }

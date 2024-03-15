@@ -681,7 +681,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Align your hands here to get the tools to build a CHI ball.
+  m_text: Raise your hands the same way to get the tools to build a CHI ball.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -43.88597, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2127,12 +2127,15 @@ MonoBehaviour:
   welcomeClip: {fileID: 8300000, guid: 0b511acdaa733954d9b435108ade53ad, type: 3}
   handsOnTableClip: {fileID: 8300000, guid: 3ba5e6b701eda24449e752021d4e9e19, type: 3}
   liftHandsUpClip: {fileID: 8300000, guid: 8b7a473410430a0449b6eaaa3b08451b, type: 3}
-  throwChiBallClip: {fileID: 8300000, guid: 6b21de62d53a3df49b24ac83b0880ab6, type: 3}
-  touchFingerTipsClip: {fileID: 8300000, guid: c2d691fd562f9ba45b8f74765f800782, type: 3}
+  throwChiBallClip: {fileID: 8300000, guid: e24eae2c5bceb944b99eb9b5e0d4fce8, type: 3}
+  touchFingerTipsClip: {fileID: 8300000, guid: 2e12c63d3c9d8fa4c8ce08d824d74cb8, type: 3}
+  adjustHandsClip: {fileID: 8300000, guid: 033cf51dd4b14d04585631de1ba09132, type: 3}
+  thankyouClip: {fileID: 8300000, guid: 7ed893ea3bdedca4294966993037275c, type: 3}
   cameraRig: {fileID: 711020257}
   menu: {fileID: 485462266}
   webSocketController: {fileID: 1291457232}
   ballController: {fileID: 832345408}
+  turnPositionSwitch: 1
 --- !u!82 &465561911
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6185,7 +6188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535756534693798852, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.31
+      value: 2.08
       objectReference: {fileID: 0}
     - target: {fileID: 1535756534693798852, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6293,15 +6296,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.21212578
+      value: 0.6669277
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.94509804
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 0.94509804
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: startDelay.maxCurve.m_Curve.Array.data[0].value
@@ -6629,7 +6632,7 @@ Transform:
   m_GameObject: {fileID: 1254644715}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.007, y: 1.26, z: 0.473}
+  m_LocalPosition: {x: 0.099, y: 1.26, z: 0.607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6938,7 +6941,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1538198692609426262, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538198692609426262, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
+      propertyPath: m_TagString
+      value: Rounds
       objectReference: {fileID: 0}
     - target: {fileID: 1538589672073425368, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: m_IsActive
@@ -6998,15 +7005,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: InitialModule.startColor.maxColor.b
-      value: 0.21212578
+      value: 0.6666667
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: InitialModule.startColor.maxColor.g
-      value: 0.94509804
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
-      value: 0
+      value: 0.94509804
       objectReference: {fileID: 0}
     - target: {fileID: 1701870399645993170, guid: c19ea996263106d48ad07abd2d729ed1, type: 3}
       propertyPath: startDelay.maxCurve.m_Curve.Array.data[0].value
