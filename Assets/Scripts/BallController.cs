@@ -18,14 +18,15 @@ public class BallController : MonoBehaviour
     private GameObject chiBallRounds;
     //public OVREyeGaze eyeGaze;
     //public GameObject caps;
+    private GameObject[] StopPoses;
 
     void Start()
     {
         // set the scale of chiBall
         currentChiballScale = new Vector3(0.08f,0.08f,0.08f);
         chiBall.transform.localScale = currentChiballScale;
+        StopPoses = GameObject.FindGameObjectsWithTag("PoseStop");
 
-        
         chiBallRounds = GameObject.FindGameObjectWithTag("Rounds");
         chiBallRounds.SetActive(false);
         chiBall.SetActive(false);
@@ -88,6 +89,8 @@ public class BallController : MonoBehaviour
     public void ThrowBall(){
         Debug.Log("Throwing ball...");
         throwBall = true;
+       // StopPoses[0].SetActive(false);
+       // StopPoses[1].SetActive(false);
         Debug.Log("Websocket state - " + webSocketControllerScript.ws.ReadyState);
         webSocketControllerScript.ws.Send("throw");
         StartCoroutine(SlideBallIntoSpace());

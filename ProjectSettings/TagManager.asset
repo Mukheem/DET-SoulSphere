@@ -11,6 +11,12 @@ TagManager:
   - DemoChiBall
   - GhostHands
   - Rounds
+  - GhostHandsThrow
+  - GhostHandsJoin
+  - GhostHandsPlace
+  - GhostHandsDistance
+  - leftHandDistance
+  - rightHandDistance
   layers:
   - Default
   - TransparentFX

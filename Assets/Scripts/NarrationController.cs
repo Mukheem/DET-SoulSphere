@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 
 public class NarrationController : MonoBehaviour
@@ -23,10 +25,19 @@ public class NarrationController : MonoBehaviour
     private GameObject ghostHands;
     public GameObject webSocketController;
     public GameObject ballController;
-   
+    public GameObject ghostHandsThrow;
+    private GameObject ghostHandsJoin;
+    private GameObject ghostHandsPlace;
+    private GameObject ghostHandsDistance;
     private WebSocketController webSocketControllerScript;
     public bool turnPositionSwitch = true;
-  
+
+    public GameObject leftHandDistance;
+    public GameObject rightHandDistance;
+
+    private float leftHandDistanceStartingTransform;
+    private float rightHandDistanceStartingTransform;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,20 +45,32 @@ public class NarrationController : MonoBehaviour
         StopPoses = GameObject.FindGameObjectsWithTag("PoseStop");
         demoChiBall = GameObject.FindGameObjectWithTag("DemoChiBall");
         ghostHands = GameObject.FindGameObjectWithTag("GhostHands");
-       
+       ghostHandsJoin = GameObject.FindGameObjectWithTag("GhostHandsJoin");
+        ghostHandsPlace = GameObject.FindGameObjectWithTag("GhostHandsPlace");
+        ghostHandsDistance = GameObject.FindGameObjectWithTag("GhostHandsDistance");
+
         passthroughlayerScript = cameraRig.GetComponent<OVRPassthroughLayer>();
         webSocketControllerScript = webSocketController.GetComponent<WebSocketController>();
 
         menu.SetActive(true);
         demoChiBall.SetActive(false);
         ghostHands.SetActive(false);
-       
+        ghostHandsThrow.SetActive(false);
+        ghostHandsJoin.SetActive(false);
+        ghostHandsPlace.SetActive(false);
+        ghostHandsDistance.SetActive(false);
 
         StopPoses[0].SetActive(false);
         StopPoses[1].SetActive(false);
+        //leftHandDistance = GameObject.FindGameObjectWithTag("leftHandDistance");
+        //rightHandDistance = GameObject.FindGameObjectWithTag("rightHandDistance");
+        leftHandDistanceStartingTransform = leftHandDistance.transform.position.x;
+        rightHandDistanceStartingTransform = rightHandDistance.transform.position.x;
+
     }
 
     // Update is called once per frame
+   
     void Update()
     {
         
@@ -68,18 +91,35 @@ public class NarrationController : MonoBehaviour
             ghostHands.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
             ghostHands.transform.forward *= -1;
 
-        }
+            ghostHandsThrow.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+            ghostHandsThrow.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+            ghostHandsThrow.transform.forward *= -1;
 
+            ghostHandsJoin.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+            ghostHandsJoin.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+            ghostHandsJoin.transform.forward *= -1;
+
+            ghostHandsPlace.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+            ghostHandsPlace.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+            ghostHandsPlace.transform.forward *= -1;
+
+            ghostHandsDistance.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+            ghostHandsDistance.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+            ghostHandsDistance.transform.forward *= -1;
+
+        }
 
     }
 
     IEnumerator startWhatIsChiBallNarration()
     {
+       
         Debug.Log("Playing startWhatIsChiBallNarration coroutine ");
         yield return new WaitForSeconds(welcomeClip.length+1.0f); // Waits for the previous clip to finish
         audioSource.PlayOneShot(whatIsChiBallClip);
         yield return new WaitForSeconds(whatIsChiBallClip.length+1.0f);
         StartCoroutine(placeHandsOnTableNarrationAndDarkenTheScene());
+        demoChiBall.SetActive(false);
     }
     public IEnumerator moveFromMixedReality()
     {
@@ -109,43 +149,82 @@ public class NarrationController : MonoBehaviour
         turnPositionSwitch = false;
         StartCoroutine(startWhatIsChiBallNarration());
         
+
     }
     
     public IEnumerator placeHandsOnTableNarrationAndDarkenTheScene()
     {
         Debug.Log("Playing placeHandsOnTableNarrationAndDarkenTheScene coroutine ");
         audioSource.PlayOneShot(handsOnTableClip);
+        ghostHandsPlace.SetActive(true);
         webSocketControllerScript.ws.Send("Need input");
         StartCoroutine(moveFromMixedReality());
-        yield return new WaitForSeconds(handsOnTableClip.length+1.9f);
+        yield return new WaitForSeconds(handsOnTableClip.length);
+        ghostHandsPlace.SetActive(false);
+        yield return new WaitForSeconds(1.9f);
         StartCoroutine(liftHandsFromTheTable());
     }
 
     public IEnumerator liftHandsFromTheTable()
     {
+        turnPositionSwitch = true;
         Debug.Log("Playing liftHandsFromTheTable coroutine ");
+        turnPositionSwitch = false;
         audioSource.PlayOneShot(liftHandsUpClip);
         ghostHands.SetActive(true);
-        yield return new WaitForSeconds(liftHandsUpClip.length+20.0f);
+        yield return new WaitForSeconds(liftHandsUpClip.length+5.0f);
         ghostHands.SetActive(false);
         demoChiBall.SetActive(false);
         audioSource.PlayOneShot(touchFingerTipsClip);
-        yield return new WaitForSeconds(14);
+        yield return new WaitForSeconds(3);
+        ghostHandsJoin.SetActive(true);
+        yield return new WaitForSeconds(11);
+        ghostHandsJoin.SetActive(false);
         ballController.GetComponent<BallController>().startChiBall = true;
         yield return new WaitForSeconds(touchFingerTipsClip.length-14);
+        ghostHandsDistance.SetActive(true);
+        StartCoroutine(translateHands());
         audioSource.PlayOneShot(adjustHandsClip);
         yield return new WaitForSeconds(adjustHandsClip.length);
+        ghostHandsDistance.SetActive(false);
+        yield return new WaitForSeconds(7);
+        ghostHandsThrow.SetActive(true);
         StopPoses[0].SetActive(true);
         StopPoses[1].SetActive(true);
         audioSource.PlayOneShot(throwChiBallClip);
         yield return new WaitForSeconds(throwChiBallClip.length);
+        ghostHandsThrow.SetActive(false);
         StartCoroutine(thankYou());
     }
 
     public IEnumerator thankYou()
     {
-        yield return new WaitForSeconds(4);
-        audioSource.PlayOneShot(thankyouClip);
-        yield return new WaitForSeconds(thankyouClip.length);
+        while(ballController.GetComponent<BallController>().throwBall)
+        {
+            yield return new WaitForSeconds(4);
+            audioSource.PlayOneShot(thankyouClip);
+            yield return new WaitForSeconds(thankyouClip.length);
+            break;
+        }
+       
     }
+
+    public IEnumerator translateHands()
+    {
+       
+        for (int i = 0; i < 7; i++)
+            {
+                leftHandDistance.transform.Translate(Vector3.left *2* Time.deltaTime, Camera.main.transform);
+                rightHandDistance.transform.Translate(Vector3.right *2* Time.deltaTime, Camera.main.transform);
+                yield return new WaitForSeconds(1f);
+                leftHandDistance.transform.Translate(Vector3.right *2* Time.deltaTime, Camera.main.transform);
+                rightHandDistance.transform.Translate(Vector3.left *2* Time.deltaTime, Camera.main.transform);
+                yield return new WaitForSeconds(1f);
+            }
+            
+           
+       
+        
+    }
+   
 }
