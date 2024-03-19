@@ -2,8 +2,9 @@
 At the same level than the folders Assets/* -->
 
 # SoulSphere
-
-<img src="Assets/Images/SOULSPHERE.png" data-canonical-src="Assets/Images/SOULSPHERE.png" width="300" height="300" />
+<p align="center">
+<img src="Assets/Images/SOULSPHERE.png" data-canonical-src="Assets/Images/SOULSPHERE.png" width="500" height="500" />
+</p>
 
 ### Introduction
 ***SoulSphere*** is a learning VR experience focused on providing a user a guided calming experience catalysed by immersive audio narration and tangible feedback to embark on a journey of **visualisation** and **intention-setting** where they can use their hands to visualise an energy ball called a CHI ball. The hand gestures will be able to change the size of the CHI ball.The experience gives the user tangible feedback at various points within the creation of CHI Ball to make it more interactive and immersive.By exploring the nuances of their own energy dynamics within the virtual realm, users can deepen their understanding of the mind-body connection and cultivate valuable skills for self-awareness and relaxation. The tangible feedback and its components are discussed below in the Design Process.
@@ -45,22 +46,36 @@ The proposed solution is viable because Soulsphere offers a degree of realism.Se
 
 ## Design Process
 - Group Discussion : As a group, we brainstormed on how we can give a calming experience to a user so that they can learn and later incorporate a practice in their day to day life. Many people don't engage in calming practices due to busy schedules, misconceptions about their effectiveness or difficulties and a preference for instant gratification or digital distractions. Thats when Chi ball came to picture.We read more about the Chi and creation of CHI ball with its  calming effects.We all agreed that incorporating this ancient technique with latest VR technology that will help users visualise will have an positive impact on them.We discussed the basic idea if it would be a sitting experience or an experience where user has to lie down. We gravitated towards a sitting experience keeping in mind the comfort of the user.Also, we sketched our vision.
-![InitialBrainstorming](Assets/Images/Brainstorming.jpg)
-
-![Sketch](Assets/Images/Sketch.png) 
+<p align="center">
+<img src="Assets/Images/Brainstorming.jpg" data-canonical-src="Assets/Images/Brainstorming.jpg" width="500" height="500" />
+<img src="Assets/Images/BsicIdea.png" data-canonical-src="Assets/Images/BsicIdea.png" width="500" height="500" />
+  </p>
 - Storyline :We discussed various aspects of the project, starting from the beginning-how the experience would start. We thought we would start the experience in VR but upon realising how calmness plays a pivotal role here, we wanted the user to be settled comfortably in a chair, then wear a headset. Before starting the experience, we decided to make sure that the user doesnt have a blurry vision or inapt IPD(Inter Pupillary Distance) that's common if you do not adjust the VR headset properly.While brainstorming, we didn't know how we would gauge that if the user is settled to start the exprience. We made a decision here.To achieve this, we asked an input from the user which was a thumbsup gesture which is intutitive when one is ready and we displayed this in front of the user. We chose passthrough here because while introducing abstract or unfamiliar concepts like Chi, while maintaining a sense of grounding and familiarisation in their physical reality is important.Once the thumbsup gesture is recognised, the UNITY triggers the audio video of the background knowledge about what is CHI and a Chi ball.Also the basis of any calming practice is to gradually shift a user from real world to another world of calmess. So the shift from passthrough to VR comes in the next stage. As a group we discussed about every stage to make the user comfortable and the experience calming.
 
 
 - Transition: Now the question was how would we transition the user from the real world to the world of VR.This is because while before passthrough, the user had a blended experience of the physical and virtual worlds, transitioning to VR allowed the user to a fully immersive environment dedicated solely to the Chi ball creation experience. Our initial plan was to make user touch a table by keeping hands on it and then the user will slowly transport via a portal which was designed by essentially the darkening of the screen.The need of tangible element here was required to make the transition from passthrough to VR more impactful.We decided to have a touch by incorporating a touch sensor. But after discussing it with our mentors, we realised touching was not enough.Some kind of feedback was necessary to add to the whole experience of transitioning. We added a heatpad enclosed in a cloth which the user is suppose to touch. As the hands get warm, the user enters the world of VR from the real world. This cloth has a circuit inside it which consists of a touch sensor, heatpad, mosfet connected to ESP 32.  The circuit diagram for heatpad is shown below.
-![UserSittingSketch](Assets/Images/UserSitting.png)
-![HeatpadConcealed](Assets/Images/Heatpad.jpg)
+
+<p align="center">
+<img src="Assets/Images/UserSitting.png" data-canonical-src="Assets/Images/UserSitting.png" width="500" height="500" />
+
+
+<img src="Assets/Images/Heatpad.jpg" data-canonical-src="Assets/Images/Heatpad.jpg" width="500" height="500" />
+</p>
 - Development of the idea : We built upon this idea more after our initial plan was in place. We decided how the energy ball would look like in VR. We discussed about a simple black universe secene with twinkling stars in UNITY.Once the user is in VR, the audio narration guided them to create a CHI ball. We decided that the hand tracking would help the user to change the size of the ball. We then planned how the experience would come towards an end. In most of CHi ball creation practices, the practitioner releases the ball in universe. Taking inspiration from that, we decided that the user will do the gesture of throw and send the CHI ball in the universe.
-![VRExperience](Assets/Images/VRExperience.png)
+<p align="center">
+<img src="Assets/Images/VRExperience.png" data-canonical-src="Assets/Images/VRExperience.png" width="500" height="500" />
+</p>
 - Ending the experience: While ending the experience, we thought that to give the subtle feeling of being energised after releasing the CHI ball, we would add a feeling of vibration to the user's both of the wrists as soon as the ball is thrown. But attaching a circuit to the user's wrist that consists of wires was a challenge to us.We decided to achieve this by sewing a circuit on a wristband that consists of The Adafruit Circuit Playground Express (CPX) that also features an infrared (IR) transmitter and receiver, which allows it to send and receive infrared signals.This was challenging but made the wrist band mess free and automated.This eliminated the need of the wired circuit and as soon as the user did the throw gesture, the sender and receiver communicated and the vibration was activated.Not only this while throwing, we decided to design the ball go away leaving a trail and still glowing while giving an enhanced visual experience to the user.
-![CPX](Assets/Images/CPX.jpg)
-![CPX](Assets/Images/WorkingBand.jpg)
-![WristBandSketch](Assets/Images/WristBandSketch.png)
-![CircuitDiagram](Assets/Images/VibrationMotorCircuit.png)
+<p align="center">
+<img src="Assets/Images/CPX.jpg" data-canonical-src="Assets/Images/CPX.jpg" width="500" height="500" />
+
+<img src="Assets/Images/WorkingBand.jpg" data-canonical-src="Assets/Images/WorkingBand.jpg" width="500" height="500" />
+
+<img src="Assets/Images/WristBandSketch.png" data-canonical-src="Assets/Images/WristBandSketch.png" width="500" height="500" />
+
+<img src="Assets/Images/VibrationMotorCircuit.png" data-canonical-src="Assets/Images/VibrationMotorCircuit.png" width="500" height="500" />
+
+</p>
 
 
 - User Personna : We have two categories of Users- A and B. Our target user A is anyone who is ready to explore calmness and learn techniques to prioritize mental wellbeing and is open to integrate mindfulness into their daily routine.The user feels that the traditional methods are not that engaging. The user feels that most of the traditional practices also focus on the present moment without actually adding anything extra. Our target user B is someone who are not able to visualise.With regular guided meditations, it becomes frustrating for the user B to imagine or visualise something. User B may struggle to fully engage with these practices. This can lead to feelings of frustration, as they may feel excluded from certain mindfulness activities or unable to reap the same benefits as those who can visualize easily. A typical user whether A or B  of this app can have a varying level of familiarity of concepts like CHI and can range from novice to experienced practitioners.The user A and B are in need of a calming practice for stress reilef that is easy,immersive has an interactive and engaging experience coupled with innovative technology that can enhance the overral experience and can be incorporated in daily schedule. 
