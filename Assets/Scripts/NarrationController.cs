@@ -73,12 +73,19 @@ public class NarrationController : MonoBehaviour
    
     void Update()
     {
-        
+        Vector3 newPosition = Camera.main.transform.position + Camera.main.transform.forward * 2;// Calculate the position of the object based on the camera's position and forward direction
+        Quaternion newRotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up); // Calculate the target rotation of the object based on the camera's forward direction
         if (menu.activeInHierarchy)
         {
-            menu.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 2;
+            /*menu.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 2;
             menu.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            menu.transform.forward *= -1;
+            menu.transform.forward *= -1;*/
+
+           
+
+            menu.transform.position = newPosition;// Set the position of the object
+            menu.transform.rotation = newRotation;// Set the rotation of the object
+
         }
         
         if (turnPositionSwitch)
@@ -86,11 +93,6 @@ public class NarrationController : MonoBehaviour
             demoChiBall.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 2;
             demoChiBall.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
             //demoChiBall.transform.forward *= -1;
-
-
-            
-            Vector3 newPosition = Camera.main.transform.position + Camera.main.transform.forward * 2;// Calculate the position of the object based on the camera's position and forward direction
-            Quaternion newRotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up); // Calculate the target rotation of the object based on the camera's forward direction
 
             ghostHands.transform.position = newPosition;// Set the position of the object
             ghostHands.transform.rotation = newRotation;// Set the rotation of the object
