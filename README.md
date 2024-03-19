@@ -2,7 +2,8 @@
 At the same level than the folders Assets/* -->
 
 # SoulSphere
-![SoulSphere logo](Assets/Images/SOULSPHERE.png)
+
+<img src="Assets/Images/SOULSPHERE.png" data-canonical-src="Assets/Images/SOULSPHERE.png" width="300" height="300" />
 
 ### Introduction
 ***SoulSphere*** is a learning VR experience focused on providing a user a guided calming experience catalysed by immersive audio narration and tangible feedback to embark on a journey of **visualisation** and **intention-setting** where they can use their hands to visualise an energy ball called a CHI ball. The hand gestures will be able to change the size of the CHI ball.The experience gives the user tangible feedback at various points within the creation of CHI Ball to make it more interactive and immersive.By exploring the nuances of their own energy dynamics within the virtual realm, users can deepen their understanding of the mind-body connection and cultivate valuable skills for self-awareness and relaxation. The tangible feedback and its components are discussed below in the Design Process.
@@ -45,6 +46,7 @@ The proposed solution is viable because Soulsphere offers a degree of realism.Se
 ## Design Process
 - Group Discussion : As a group, we brainstormed on how we can give a calming experience to a user so that they can learn and later incorporate a practice in their day to day life. Many people don't engage in calming practices due to busy schedules, misconceptions about their effectiveness or difficulties and a preference for instant gratification or digital distractions. Thats when Chi ball came to picture.We read more about the Chi and creation of CHI ball with its  calming effects.We all agreed that incorporating this ancient technique with latest VR technology that will help users visualise will have an positive impact on them.We discussed the basic idea if it would be a sitting experience or an experience where user has to lie down. We gravitated towards a sitting experience keeping in mind the comfort of the user.Also, we sketched our vision.
 ![InitialBrainstorming](Assets/Images/Brainstorming.jpg)
+
 ![Sketch](Assets/Images/Sketch.png) 
 - Storyline :We discussed various aspects of the project, starting from the beginning-how the experience would start. We thought we would start the experience in VR but upon realising how calmness plays a pivotal role here, we wanted the user to be settled comfortably in a chair, then wear a headset. Before starting the experience, we decided to make sure that the user doesnt have a blurry vision or inapt IPD(Inter Pupillary Distance) that's common if you do not adjust the VR headset properly.While brainstorming, we didn't know how we would gauge that if the user is settled to start the exprience. We made a decision here.To achieve this, we asked an input from the user which was a thumbsup gesture which is intutitive when one is ready and we displayed this in front of the user. We chose passthrough here because while introducing abstract or unfamiliar concepts like Chi, while maintaining a sense of grounding and familiarisation in their physical reality is important.Once the thumbsup gesture is recognised, the UNITY triggers the audio video of the background knowledge about what is CHI and a Chi ball.Also the basis of any calming practice is to gradually shift a user from real world to another world of calmess. So the shift from passthrough to VR comes in the next stage. As a group we discussed about every stage to make the user comfortable and the experience calming.
 
