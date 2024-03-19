@@ -61,6 +61,8 @@ The proposed solution is viable because Soulsphere offers a degree of realism.Se
 
 
 <img src="Assets/Images/Heatpad.jpg" data-canonical-src="Assets/Images/Heatpad.jpg" width="500" height="500" />
+<img src="Assets/Images/Heatpad_Circuit.jpeg" data-canonical-src="Assets/Images/Heatpad_Circuit.jpeg" width="500" height="500" />
+
 </p>
 
 - Development of the idea : We built upon this idea more after our initial plan was in place. We decided how the energy ball would look like in VR. We discussed about a simple black universe secene with twinkling stars in UNITY.Once the user is in VR, the audio narration guided them to create a CHI ball. We decided that the hand tracking would help the user to change the size of the ball. We then planned how the experience would come towards an end. In most of CHi ball creation practices, the practitioner releases the ball in universe. Taking inspiration from that, we decided that the user will do the gesture of throw and send the CHI ball in the universe.
