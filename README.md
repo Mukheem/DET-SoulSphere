@@ -157,7 +157,7 @@ Launch Unity Hub once the installation is complete.
 
 | Platform | Device | Requirements | 
 | -------- | ------ | ------------ | 
-| Windows  | Meta Quest   | Unity 2022.3 or higher, Arduino | 
+| Windows  | Meta Quest   | Unity 2022.3 or higher, Arduino, ESP32-S2 WROOM thing Plus | 
 
 ## Usage
 
