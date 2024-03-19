@@ -78,7 +78,7 @@ The proposed solution is viable because Soulsphere offers a degree of realism.Se
 
 <img src="Assets/Images/WristBandSketch.png" data-canonical-src="Assets/Images/WristBandSketch.png" width="500" height="500" />
 
-<img src="Assets/Images/VibrationMotorCircuit.png" data-canonical-src="Assets/Images/VibrationMotorCircuit.png" width="500" height="500" />
+<img src="Assets/Images/VibrationMotorCircuit.png" data-canonical-src="Assets/Images/VibrationMotorCircuit.png" width="1600" height="1138" />
 
 </p>
 
