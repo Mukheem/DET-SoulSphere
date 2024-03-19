@@ -80,34 +80,58 @@ public class NarrationController : MonoBehaviour
             menu.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
             menu.transform.forward *= -1;
         }
-
+        
         if (turnPositionSwitch)
         {
             demoChiBall.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 2;
             demoChiBall.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            demoChiBall.transform.forward *= -1;
+            //demoChiBall.transform.forward *= -1;
 
-            ghostHands.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
-            ghostHands.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            ghostHands.transform.forward *= -1;
 
-            ghostHandsThrow.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
-            ghostHandsThrow.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            ghostHandsThrow.transform.forward *= -1;
+            
+            Vector3 newPosition = Camera.main.transform.position + Camera.main.transform.forward * 2;// Calculate the position of the object based on the camera's position and forward direction
+            Quaternion newRotation = Quaternion.LookRotation(Camera.main.transform.forward, Vector3.up); // Calculate the target rotation of the object based on the camera's forward direction
 
-            ghostHandsJoin.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
-            ghostHandsJoin.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            ghostHandsJoin.transform.forward *= -1;
+            ghostHands.transform.position = newPosition;// Set the position of the object
+            ghostHands.transform.rotation = newRotation;// Set the rotation of the object
 
-            ghostHandsPlace.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
-            ghostHandsPlace.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            ghostHandsPlace.transform.forward *= -1;
+            ghostHandsThrow.transform.position = newPosition;// Set the position of the object
+            ghostHandsThrow.transform.rotation = newRotation;// Set the rotation of the object
 
-            ghostHandsDistance.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
-            ghostHandsDistance.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
-            ghostHandsDistance.transform.forward *= -1;
+            ghostHandsJoin.transform.position = newPosition;// Set the position of the object
+            ghostHandsJoin.transform.rotation = newRotation;// Set the rotation of the object
+
+            ghostHandsPlace.transform.position = newPosition;// Set the position of the object
+            ghostHandsPlace.transform.rotation = newRotation;// Set the rotation of the object
+
+            ghostHandsDistance.transform.position = newPosition;// Set the position of the object
+            ghostHandsDistance.transform.rotation = newRotation;// Set the rotation of the object
+
+
+            /* ghostHands.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+             ghostHands.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+             ghostHands.transform.forward *= -1;
+
+             ghostHandsThrow.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+             ghostHandsThrow.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+             ghostHandsThrow.transform.forward *= -1;
+
+             ghostHandsJoin.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+             ghostHandsJoin.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+             ghostHandsJoin.transform.forward *= -1;
+
+             ghostHandsPlace.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+             ghostHandsPlace.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+             ghostHandsPlace.transform.forward *= -1;
+
+             ghostHandsDistance.transform.position = Camera.main.transform.position + new Vector3(Camera.main.transform.forward.x, Camera.main.transform.forward.y, Camera.main.transform.forward.z) * 1;
+             ghostHandsDistance.transform.LookAt(new Vector3(Camera.main.transform.forward.x, menu.transform.position.y, Camera.main.transform.position.z));
+             ghostHandsDistance.transform.forward *= -1;*/
 
         }
+        
+        
+        
 
     }
 
@@ -154,9 +178,11 @@ public class NarrationController : MonoBehaviour
     
     public IEnumerator placeHandsOnTableNarrationAndDarkenTheScene()
     {
+        turnPositionSwitch = true;
         Debug.Log("Playing placeHandsOnTableNarrationAndDarkenTheScene coroutine ");
         audioSource.PlayOneShot(handsOnTableClip);
         ghostHandsPlace.SetActive(true);
+        turnPositionSwitch = false;
         webSocketControllerScript.ws.Send("Need input");
         StartCoroutine(moveFromMixedReality());
         yield return new WaitForSeconds(handsOnTableClip.length);
@@ -177,20 +203,26 @@ public class NarrationController : MonoBehaviour
         demoChiBall.SetActive(false);
         audioSource.PlayOneShot(touchFingerTipsClip);
         yield return new WaitForSeconds(3);
+        turnPositionSwitch = true;
         ghostHandsJoin.SetActive(true);
+        turnPositionSwitch = false;
         yield return new WaitForSeconds(11);
         ghostHandsJoin.SetActive(false);
         ballController.GetComponent<BallController>().startChiBall = true;
         yield return new WaitForSeconds(touchFingerTipsClip.length-14);
+        turnPositionSwitch = true;
         ghostHandsDistance.SetActive(true);
+        turnPositionSwitch = false;
         StartCoroutine(translateHands());
         audioSource.PlayOneShot(adjustHandsClip);
         yield return new WaitForSeconds(adjustHandsClip.length);
         ghostHandsDistance.SetActive(false);
         yield return new WaitForSeconds(7);
+        turnPositionSwitch = true;
         ghostHandsThrow.SetActive(true);
         StopPoses[0].SetActive(true);
         StopPoses[1].SetActive(true);
+        turnPositionSwitch = false;
         audioSource.PlayOneShot(throwChiBallClip);
         yield return new WaitForSeconds(throwChiBallClip.length);
         ghostHandsThrow.SetActive(false);
