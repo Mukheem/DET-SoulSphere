@@ -50,6 +50,7 @@ The proposed solution is viable because Soulsphere offers a degree of realism.Se
 <img src="Assets/Images/Brainstorming.jpg" data-canonical-src="Assets/Images/Brainstorming.jpg" width="500" height="500" />
 <img src="Assets/Images/BsicIdea.png" data-canonical-src="Assets/Images/BsicIdea.png" width="500" height="500" />
   </p>
+
 - Storyline :We discussed various aspects of the project, starting from the beginning-how the experience would start. We thought we would start the experience in VR but upon realising how calmness plays a pivotal role here, we wanted the user to be settled comfortably in a chair, then wear a headset. Before starting the experience, we decided to make sure that the user doesnt have a blurry vision or inapt IPD(Inter Pupillary Distance) that's common if you do not adjust the VR headset properly.While brainstorming, we didn't know how we would gauge that if the user is settled to start the exprience. We made a decision here.To achieve this, we asked an input from the user which was a thumbsup gesture which is intutitive when one is ready and we displayed this in front of the user. We chose passthrough here because while introducing abstract or unfamiliar concepts like Chi, while maintaining a sense of grounding and familiarisation in their physical reality is important.Once the thumbsup gesture is recognised, the UNITY triggers the audio video of the background knowledge about what is CHI and a Chi ball.Also the basis of any calming practice is to gradually shift a user from real world to another world of calmess. So the shift from passthrough to VR comes in the next stage. As a group we discussed about every stage to make the user comfortable and the experience calming.
 
 
@@ -61,10 +62,12 @@ The proposed solution is viable because Soulsphere offers a degree of realism.Se
 
 <img src="Assets/Images/Heatpad.jpg" data-canonical-src="Assets/Images/Heatpad.jpg" width="500" height="500" />
 </p>
+
 - Development of the idea : We built upon this idea more after our initial plan was in place. We decided how the energy ball would look like in VR. We discussed about a simple black universe secene with twinkling stars in UNITY.Once the user is in VR, the audio narration guided them to create a CHI ball. We decided that the hand tracking would help the user to change the size of the ball. We then planned how the experience would come towards an end. In most of CHi ball creation practices, the practitioner releases the ball in universe. Taking inspiration from that, we decided that the user will do the gesture of throw and send the CHI ball in the universe.
 <p align="center">
 <img src="Assets/Images/VRExperience.png" data-canonical-src="Assets/Images/VRExperience.png" width="500" height="500" />
 </p>
+
 - Ending the experience: While ending the experience, we thought that to give the subtle feeling of being energised after releasing the CHI ball, we would add a feeling of vibration to the user's both of the wrists as soon as the ball is thrown. But attaching a circuit to the user's wrist that consists of wires was a challenge to us.We decided to achieve this by sewing a circuit on a wristband that consists of The Adafruit Circuit Playground Express (CPX) that also features an infrared (IR) transmitter and receiver, which allows it to send and receive infrared signals.This was challenging but made the wrist band mess free and automated.This eliminated the need of the wired circuit and as soon as the user did the throw gesture, the sender and receiver communicated and the vibration was activated.Not only this while throwing, we decided to design the ball go away leaving a trail and still glowing while giving an enhanced visual experience to the user.
 <p align="center">
 <img src="Assets/Images/CPX.jpg" data-canonical-src="Assets/Images/CPX.jpg" width="500" height="500" />
@@ -102,7 +105,7 @@ The following video shows the whole SoulSphere experience.
 
 SoulSphere offers an immersive experience of creation of a 3D CHI Ball in a calming environment.Following are the features that have been incorporated to make the user experience calming and engaging.
 
-***An Immersive Virtual Experience with Passthrough**
+**An Immersive Virtual Experience with Passthrough**
 The appearance of virtual elements like a CHI ball in physical environments is meticulously designed to provide users with comfort and the VR environment is designed for a deeply immersive and engaging experience. 
 
 **Hand-tracking and Pose Detection**
