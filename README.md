@@ -4,9 +4,11 @@ At the same level than the folders Assets/* -->
 # SoulSphere
 <p align="center">
 <img src="Assets/Images/SOULSPHERE.png" data-canonical-src="Assets/Images/SOULSPHERE.png" width="500" height="500" /> <br />
- [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5D9EXvJjOgk/0.jpg)](https://www.youtube.com/watch?v=5D9EXvJjOgk)
-</p>
  
+</p>
+
+***Demo:*** (https://www.youtube.com/watch?v=5D9EXvJjOgk)
+ <br />
 ### Introduction
 ***SoulSphere*** is a learning VR experience focused on providing a user a guided calming experience catalysed by immersive audio narration and tangible feedback to embark on a journey of **visualisation** and **intention-setting** where they can use their hands to visualise an energy ball called a CHI ball. The hand gestures will be able to change the size of the CHI ball.Through guided visualization exercises, SoulSphere facilitates the development of **visualization** skills essential for **cognitive** and **emotional** processing. By engaging in intentional imagery to create a Chi ball, users sharpen their ability to visualize and manifest their intentions, a valuable skill applicable across various educational disciplines. The hand gestures will be able to change the size of the CHI ball. The experience gives the user tangible feedback at various points within the creation of CHI Ball to make it more interactive and immersive. By exploring the nuances of their own energy dynamics within the virtual realm, users can deepen their understanding of the mind-body connection and cultivate valuable skills for self-awareness and relaxation. The tangible feedback and its components are discussed below in the Design Process.
 
