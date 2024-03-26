@@ -3,7 +3,7 @@ At the same level than the folders Assets/* -->
 
 # SoulSphere
 <p align="center">
-<img src="Assets/Images/SOULSPHERE.png" data-canonical-src="Assets/Images/SOULSPHERE.png" width="500" height="500" />
+<img src="Assets/Images/SOULSPHERE.png" data-canonical-src="Assets/Images/SOULSPHERE.png" width="500" height="500" /></br>
   [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5D9EXvJjOgk/0.jpg)](https://www.youtube.com/watch?v=5D9EXvJjOgk)
 </p>
 
